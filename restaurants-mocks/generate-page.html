@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<!--script type="text/javascript" src="http://cdn.rightjs.org/right-2.3.1.js"></script-->
+</head>
+<body>
+	<script type="text/javascript">
+		namespace = {};
+		namespace.menu = {};
+		namespace.menu.onClick = function(event, menu, prefix) {
+			$(menu).find('li').removeClass('active');
+			var activeLi = $(event.target).closest('li');
+			var role = activeLi.addClass('active').attr('id').replace(prefix + 'nav:', '');
+			$('div.form-horizontal').hide();
+			$(document.getElementById(prefix + 'form:' + role)).show();
+			return false;
+		};
+	</script>
+	<div style="margin:2% 10%;">
+		<h2 style="margin-bottom: 2%;">
+			<span class="glyphicon glyphicon-play" style="margin-top: 10px;"></span>
+			<span style="display:inline-block;margin:10px;">Generate page</span>
+		</h2>
+
+
+		<!-- Menu -->
+		<div style="padding:0% 3%">
+			<ul class="nav nav-pills" onclick="return namespace.menu.onClick(event, this, 'template-');">
+				<li role="presentation" id="template-nav:restaurants"><a href="#"><span class="glyphicon glyphicon-home"></span> 1. Index page</a></li>
+				<li role="presentation" id="template-nav:bars"><a href="#"><span class="glyphicon glyphicon-search"></span> 2. Search page</a></li>
+				<li role="presentation" class="active" id="template-nav:cafes"><a href="#"><span class="glyphicon glyphicon-picture"></span> 3. View page</a></li>
+				<li role="presentation" id="template-nav:pizzerias"><a href="#"><span class="glyphicon glyphicon-save"></span> 4. Order/Cart</a></li>
+				<li role="presentation" id="template-nav:pizzerias"><a href="#"><span class="glyphicon glyphicon-calendar"></span> 5. Schedule page</a></li>
+				<li role="presentation" id="template-nav:pizzerias"><a href="#"><span class="glyphicon glyphicon-cutlery"></span> 6. Address page</a></li>
+			</ul>
+		</div>
+
+		<!-- Restaurants -->
+		<div id="template-form:restaurants" class="form-horizontal" style="margin:2% 3%; height:480px;overflow-y:scroll; border: solid 1px grey;border-radius:10px;">
+			<div class="container">
+
+				<div class="blog-header">
+					<h1 class="blog-title">Bone Marrow with Bourbon Smoked Cherries</h1>
+					<p class="lead blog-description">By artisanal ice cream company based in Portland, Oregon. The company was launched in 2011 by cousins Kim and Tyler Malek.</p>
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-8 blog-main">
+
+						<div class="blog-post">
+							<h2 class="blog-post-title">Tasty ice-cream</h2>
+							<p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+
+							<p>Since opening, Salt and Straw has gained national media attention for its exotic ice cream flavors. Standout flavors, such as Bone Marrow with Bourbon Smoked Cherries and Arbequina Olive Oil, have served as some of the main reasons Salt and Straw has been included lists of America's best ice cream.</p>
+							<hr>
+
+							<p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+							<blockquote>
+								<p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+							</blockquote>
+							<p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+							<h2>Heading</h2>
+							<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+							<h3>Sub-heading</h3>
+							<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+							<pre><code>Example code block</code></pre>
+							<p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+							<h3>Sub-heading</h3>
+							<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+							<ul>
+								<li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+								<li>Donec id elit non mi porta gravida at eget metus.</li>
+								<li>Nulla vitae elit libero, a pharetra augue.</li>
+							</ul>
+							<p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+							<ol>
+								<li>Vestibulum id ligula porta felis euismod semper.</li>
+								<li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
+								<li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
+							</ol>
+							<p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
+						</div><!-- /.blog-post -->
+
+						<div class="blog-post">
+							<h2 class="blog-post-title">Another blog post</h2>
+							<p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
+
+							<p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+							<blockquote>
+								<p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+							</blockquote>
+							<p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+							<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+						</div><!-- /.blog-post -->
+
+						<div class="blog-post">
+							<h2 class="blog-post-title">New feature</h2>
+							<p class="blog-post-meta">December 14, 2013 by <a href="#">Chris</a></p>
+
+							<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+							<ul>
+								<li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+								<li>Donec id elit non mi porta gravida at eget metus.</li>
+								<li>Nulla vitae elit libero, a pharetra augue.</li>
+							</ul>
+							<p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+							<p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+						</div><!-- /.blog-post -->
+
+						<nav>
+							<ul class="pager">
+								<li><a href="#">Previous</a></li>
+								<li><a href="#">Next</a></li>
+							</ul>
+						</nav>
+
+					</div><!-- /.blog-main -->
+
+					<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+						<div class="sidebar-module sidebar-module-inset">
+							<h4>Sweet ice-cream pearls</h4>
+							<img src="ice-cream.jpeg" />
+						</div>
+						<div class="sidebar-module">
+							<h4>Cart</h4>
+							<ol class="list-unstyled">
+								<li><a href="#">Cookies, 10</a></li>
+								<li><a href="#">Pancakes, 3</a></li>
+								<li><a href="#">January 2014</a></li>
+								<li><a href="#">December 2013</a></li>
+								<li><a href="#">November 2013</a></li>
+								<li><a href="#">October 2013</a></li>
+								<li><a href="#">September 2013</a></li>
+								<li><a href="#">August 2013</a></li>
+								<li><a href="#">July 2013</a></li>
+								<li><a href="#">June 2013</a></li>
+								<li><a href="#">May 2013</a></li>
+								<li><a href="#">April 2013</a></li>
+							</ol>
+						</div>
+						<div class="sidebar-module">
+							<h4>Elsewhere</h4>
+							<ol class="list-unstyled">
+								<li><a href="#">GitHub</a></li>
+								<li><a href="#">Twitter</a></li>
+								<li><a href="#">Facebook</a></li>
+							</ol>
+						</div>
+					</div><!-- /.blog-sidebar -->
+
+				</div><!-- /.row -->
+
+			</div><!-- /.container -->
+
+			<footer class="blog-footer">
+				<p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+				<p>
+					<a href="#">Back to top</a>
+				</p>
+			</footer>
+		</div>
+
+		<div style="margin:2% 3%;">
+			<h2 style="text-align:right;">
+			<span class="glyphicon glyphicon-wrench"></span> &nbsp;
+				<span class="glyphicon glyphicon-tasks"></span> &nbsp;
+				<span class="glyphicon glyphicon-filter"></span> &nbsp;
+				<span class="glyphicon glyphicon-briefcase"></span> &nbsp;
+				<span class="glyphicon glyphicon-fullscreen"></span> &nbsp;
+				<span class="glyphicon glyphicon-log-in"></span> &nbsp;
+				<span class="glyphicon glyphicon-floppy-open"></span> &nbsp;
+				<span class="glyphicon glyphicon-new-window"></span> &nbsp;
+			</h2>
+		</div>
+
+
+	</div>
+</body>
+</html>

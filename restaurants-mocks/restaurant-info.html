@@ -1,0 +1,402 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<!--script type="text/javascript" src="http://cdn.rightjs.org/right-2.3.1.js"></script-->
+</head>
+<body>
+	<script type="text/javascript">
+		namespace = {};
+		namespace.menu = {};
+		namespace.menu.onClick = function(event, menu, prefix) {
+			$(menu).find('li').removeClass('active');
+			var activeLi = $(event.target).closest('li');
+			var role = activeLi.addClass('active').attr('id').replace(prefix + 'nav:', '');
+			$('div.form-horizontal').hide();
+			$(document.getElementById(prefix + 'form:' + role)).show();
+			return false;
+		};
+	</script>
+	<div style="margin:2% 10%;">
+		<h2 style="margin-bottom: 2%;">
+			<span class="glyphicon glyphicon-info-sign" style="margin-top: 10px;"></span>
+			<span style="display:inline-block;margin:10px;">Restaurant information</span>
+		</h2>
+
+
+		<!-- Menu -->
+		<div style="padding:0% 3%">
+			<ul class="nav nav-pills" onclick="return namespace.menu.onClick(event, this, 'info-');">
+				<li role="presentation" class="active" id="info-nav:base"><a href="#"><span class="glyphicon glyphicon-cutlery"></span> Base</a></li>
+				<li role="presentation" id="info-nav:address"><a href="#"><span class="glyphicon glyphicon-phone-alt"></span> Address</a></li>
+				<li role="presentation" id="info-nav:contact"><a href="#"><span class="glyphicon glyphicon-earphone"></span> Contact</a></li>
+				<li role="presentation" id="info-nav:owner"><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Owner</a></li>
+				<li role="presentation" id="info-nav:calendar"><a href="#"><span class="glyphicon glyphicon-calendar"></span> Schedule</a></li>
+			</ul>
+		</div>
+
+
+
+		<!-- base -->
+		<div id="info-form:base" class="form-horizontal" style="padding:2% 3%">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Name</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" placeholder="Enter restaurant name"> 
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Address</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" placeholder="Enter restaurant address">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Type of Food</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" placeholder="Enter type of food">
+				</div>					
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Logo</label>
+				<div class="col-sm-10">
+					<input type="file" class="form-control" placeholder="Choose a logo (JPEG, GIF, PNG, SVG)">
+				</div>					
+			</div>
+
+			<div class="form-group" style="margin-top: 2%;">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Save</button>
+					<button type="submit" class="btn btn-danger">Cancel</button>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- address -->
+		<div id="info-form:address" class="form-horizontal" style="padding:2% 3%; display:none;">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Address Line 1</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" placeholder="Street address, P.O. box, company name, c/o"> 
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Address Line 2</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" placeholder="Apartment, suite, unit, building, floor, etc.">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">City</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" placeholder="Enter city">
+				</div>					
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">State/Province/Region</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" placeholder="State or province or region">
+				</div>					
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Zip</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" placeholder="Enter zip code">
+				</div>					
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Country</label>
+				<div class="col-sm-10">
+					<div class="dropdown">
+						<button id="info-form-country" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							Choose country <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-country">
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">United States</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">United Kingdom</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" style="margin-top: 2%;">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Save</button>
+					<button type="submit" class="btn btn-danger">Cancel</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- contact -->
+		<div id="info-form:contact" class="form-horizontal" style="padding:2% 3%; display:none;">
+			
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Phone</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" placeholder="Enter email">
+				</div>					
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Fax</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" placeholder="Enter fax">
+				</div>					
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Email</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" placeholder="Enter email">
+				</div>					
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">URL</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" placeholder="Enter URL">
+				</div>					
+			</div>
+
+			<div class="form-group" style="margin-top: 2%;">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Save</button>
+					<button type="submit" class="btn btn-danger">Cancel</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- owner -->
+		<div id="info-form:owner" class="form-horizontal" style="padding:2% 3%; display:none;">
+			
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Owner's Name</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" placeholder="Enter owner's name">
+				</div>					
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Owner's Personal Phone</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" placeholder="Enter owner's personal phone">
+				</div>					
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Owner's Personal Email</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" placeholder="Enter personal email">
+				</div>					
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Owner's Personal URL</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" placeholder="Enter URL to personal page (Facebook, Twitter, etc)">
+				</div>					
+			</div>
+
+			<div class="form-group" style="margin-top: 2%;">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Save</button>
+					<button type="submit" class="btn btn-danger">Cancel</button>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- schedule -->
+		<div id="info-form:calendar" class="form-horizontal" style="padding:2% 3%; display:none;">
+			
+			<!-- TODO: optimize this one/create time selector -->
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Sunday</label>
+				<div class="col-sm-10">
+					<div class="dropdown col-sm-2">
+						<button id="info-form-sunday-from" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							11:00 AM <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-sunday-from">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Not working</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">12:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">1:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">2:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">4:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">5:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">6:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">7:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">8:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">9:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">10:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">11:00 AM</a></li>
+						</ul>
+					</div>
+					<div class="dropdown  col-sm-2">
+						<button id="info-form-sunday-to" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							12:00 AM <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-sunday-to">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Not working</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">12:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">1:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">2:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">4:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">5:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">6:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">7:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">8:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">9:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">10:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">11:00 AM</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Monday</label>
+				<div class="col-sm-10">
+					<div class="dropdown col-sm-2">
+						<button id="info-form-monday-from" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							Holiday <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-monday-from">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Holiday</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">12:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">1:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">2:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">4:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">5:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">6:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">7:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">8:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">9:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">10:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">11:00 AM</a></li>
+						</ul>
+					</div>
+					<div class="dropdown  col-sm-2">
+						<button id="info-form-monday-to" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							Holiday <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-monday-to">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Holiday</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">12:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">1:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">2:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">4:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">5:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">6:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">7:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">8:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">9:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">10:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">11:00 AM</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Tuesday</label>
+				<div class="col-sm-10">
+					<div class="dropdown col-sm-2">
+						<button id="info-form-tuesday-from" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							11:00 AM <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-tuesday-from">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Not working</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">12:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">1:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">2:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">4:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">5:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">6:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">7:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">8:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">9:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">10:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">11:00 AM</a></li>
+						</ul>
+					</div>
+					<div class="dropdown  col-sm-2">
+						<button id="info-form-tuesday-to" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							12:00 AM <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-tuesday-to">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Not working</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">12:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">1:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">2:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">4:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">5:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">6:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">7:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">8:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">9:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">10:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">11:00 AM</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Wednesday</label>
+				<div class="col-sm-10">
+					<div class="dropdown col-sm-2">
+						<button id="info-form-tuesday-from" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							11:00 AM <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-tuesday-from">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Not working</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">12:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">1:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">2:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">4:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">5:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">6:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">7:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">8:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">9:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">10:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">11:00 AM</a></li>
+						</ul>
+					</div>
+					<div class="dropdown  col-sm-2">
+						<button id="info-form-tuesday-to" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							12:00 AM <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-tuesday-to">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Not working</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">12:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">1:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">2:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">4:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">5:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">6:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">7:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">8:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">9:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">10:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">11:00 AM</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Thursday</label>
+				<div class="col-sm-10">
+					<div class="dropdown col-sm-2">
+						<button id="info-form-tuesday-from" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							11:00 AM <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-tuesday-from">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Not working</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">12:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">1:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">2:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">4:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">5:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">6:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">7:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">8:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">9:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">10:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">11:00 AM</a></li>
+						</ul>
+					</div>
+					<div class="dropdown  col-sm-2">
+						<button id="info-form-tuesday-to" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							9:00 PM <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-tuesday-to">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Not working</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">12:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">1:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">2:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">4:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">5:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">6:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">7:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">8:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">9:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">10:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">11:00 AM</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Friday</label>
+				<div class="col-sm-10">
+					<div class="dropdown col-sm-2">
+						<button id="info-form-tuesday-from" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							9:00 PM <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-tuesday-from">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Not working</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">12:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">1:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">2:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">4:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">5:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">6:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">7:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">8:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">9:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">10:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">11:00 AM</a></li>
+						</ul>
+					</div>
+					<div class="dropdown  col-sm-2">
+						<button id="info-form-tuesday-to" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							9:00 PM <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-tuesday-to">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Not working</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">12:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">1:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">2:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">4:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">5:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">6:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">7:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">8:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">9:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">10:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">11:00 AM</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Saturday</label>
+				<div class="col-sm-10">
+					<div class="dropdown col-sm-2">
+						<button id="info-form-tuesday-from" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							11:00 AM <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-tuesday-from">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Not working</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">12:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">1:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">2:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">4:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">5:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">6:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">7:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">8:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">9:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">10:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">11:00 AM</a></li>
+						</ul>
+					</div>
+					<div class="dropdown  col-sm-2">
+						<button id="info-form-tuesday-to" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default dropdown-toggle">
+							11:00 PM <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="info-form-tuesday-to">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Not working</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">12:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">1:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">2:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">3:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">4:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">5:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">6:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">7:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">8:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">9:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">10:00 AM</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#">11:00 AM</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" style="margin-top: 2%;">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Save</button>
+					<button type="submit" class="btn btn-danger">Cancel</button>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		</div>
+	</body>
+	</html>

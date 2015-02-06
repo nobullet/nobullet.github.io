@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<!--script type="text/javascript" src="http://cdn.rightjs.org/right-2.3.1.js"></script-->
+</head>
+<body>
+	<script type="text/javascript">
+		namespace = {};
+		namespace.menu = {};
+		namespace.menu.onClick = function(event, menu, prefix) {
+			$(menu).find('li').removeClass('active');
+			var activeLi = $(event.target).closest('li');
+			var role = activeLi.addClass('active').attr('id').replace(prefix + 'nav:', '');
+			$('div.form-horizontal').hide();
+			$(document.getElementById(prefix + 'form:' + role)).show();
+			return false;
+		};
+	</script>
+	<div style="margin:2% 10%;">
+		<h2 style="margin-bottom: 2%;">
+			<span class="glyphicon glyphicon-list-alt" style="margin-top: 10px;"></span>
+			<span style="display:inline-block;margin:10px;">Choose your template</span>
+		</h2>
+
+
+		<!-- Menu -->
+		<div style="padding:0% 3%">
+			<ul class="nav nav-pills" onclick="return namespace.menu.onClick(event, this, 'template-');">
+				<li role="presentation" class="active" id="template-nav:restaurants"><a href="#"><span class="glyphicon glyphicon-cutlery"></span> Restaurants</a></li>
+				<li role="presentation" id="template-nav:bars"><a href="#"><span class="glyphicon glyphicon-tint"></span> Bars</a></li>
+				<li role="presentation" id="template-nav:cafes"><a href="#"><span class="glyphicon glyphicon-tent"></span> Cafes</a></li>
+				<li role="presentation" id="template-nav:pizzerias"><a href="#"><span class="glyphicon glyphicon-cd"></span> Pizzerias</a></li>
+			</ul>
+		</div>
+
+		<!-- Restaurants -->
+		<div id="template-form:restaurants" class="form-horizontal" style="margin:2% 3%; height:480px;overflow-y:scroll;">
+			<img src="templates-1.png" />
+		</div>
+
+		<!-- Bars -->
+		<div id="template-form:bars" class="form-horizontal" style="margin:2% 3%; display:none; height:480px;overflow-y:scroll;">
+			<img src="templates-2.png" />
+		</div>
+
+		<!-- Cafes -->
+		<div id="template-form:cafes" class="form-horizontal" style="margin:2% 3%; display:none; height:480px;overflow-y:scroll;">
+			<img src="templates-3.png" />
+		</div>
+
+		<!-- Pizzerias -->
+		<div id="template-form:pizzerias" class="form-horizontal" style="margin:2% 3%; display:none; height:480px;overflow-y:scroll;">
+			<img src="templates-4.png" />
+		</div>
+
+	</div>
+</body>
+</html>
